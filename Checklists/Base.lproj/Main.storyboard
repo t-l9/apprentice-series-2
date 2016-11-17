@@ -99,7 +99,7 @@
                                 <action selector="cancel" destination="epD-s4-o7L" id="ihg-Tn-5Nj"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="aUA-K5-ddF">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="aUA-K5-ddF">
                             <connections>
                                 <action selector="done" destination="epD-s4-o7L" id="if1-vo-xG6"/>
                             </connections>
