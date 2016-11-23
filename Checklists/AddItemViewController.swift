@@ -13,14 +13,27 @@ protocol AddItemViewControllerDelegate: class {
     func addItemViewControllerDidCancel(_ controller: AddItemViewController)
     func addItemViewController(_ controller: AddItemViewController,
                                didFinishAddingItem item: ChecklistItem)
+    func addItemViewController(_ controller: AddItemViewController,
+                               didFinishEditingItem item: ChecklistItem)
 }
 
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
     
+    var itemToEdit: ChecklistItem?
     weak var delegate: AddItemViewControllerDelegate?
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let item = itemToEdit {
+            title = "Edit Item"
+            textField.text = item.text
+            doneBarButton.isEnabled = true
+        }
+    }
     
     override func tableView(_ tableView: UITableView,
                             willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -37,6 +50,9 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func done() {
+        if let item = itemToEdit {
+            
+        }
         let item = ChecklistItem()
         item.text = textField.text!
         item.checked = false
